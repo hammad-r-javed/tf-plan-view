@@ -111,7 +111,7 @@ navBar model =
             , color = Elem.rgb 0.05 0.05 0.05
             }
         ]
-        [ Elem.el [ Elem.alignLeft ] (Elem.text "TF Plan Viewer")
+        [ Elem.el [ Elem.alignLeft ] (Elem.text "TF Plan View")
         ]
 
 
