@@ -1,19 +1,22 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+set -euo pipefail
 
 PROJ_DIR=$(pwd)
+CMD='\e[0;34m'
+NC='\e[0m'
 
-function print_logline {
-    echo "[$(date +\"%d-%m-%y\")][$(date +\"%T\")] [client] $1"
+function log {
+    echo -e "${CMD}[$(date +\"%d-%m-%y\")][$(date +\"%T\")] [client] ${1}${NC}"
 }
 
-function build_client {
-    print_logline "client build process start"
+log "client build process start"
 
+if [[ ! -d out ]]; then
     mkdir out
-    elm-format --yes src/elm/*
-    elm make src/elm/Main.elm --output out/index.html
+fi
 
-    print_logline "client build process end"
-}
+elm-format --yes src/elm/*
+elm make src/elm/Main.elm --output out/index.html
 
-build_client
+log "client build process end"
