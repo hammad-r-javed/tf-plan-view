@@ -17,6 +17,7 @@ if [[ ! -d out ]]; then
 fi
 
 elm-format --yes src/elm/*
-elm make src/elm/Main.elm --output out/index.html
+elm make src/elm/Main.elm --output out/main.js
+cp src/html/*.html out/
 
 log "client build process end"
