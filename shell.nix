@@ -6,16 +6,12 @@ let
 in
 pkgs_main.mkShell {
   buildInputs = [
-    pkgs_main.rustc
-    pkgs_main.cargo
+    pkgs_main.opentofu
     pkgs_main.elmPackages.elm
     pkgs_main.elmPackages.elm-format
   ];
 
   shellHook = ''
-    export CARGO_HOME="$(pwd)/.cargo-home"
-    export PATH="$CARGO_HOME/bin:$PATH"
-
-    mkdir -p "$CARGO_HOME"
+    source .venv/bin/activate
   '';
 }

@@ -24,6 +24,16 @@ if ! ./build.sh; then
 fi
 cd ../
 
-cargo build
+if [[ ! -d static ]]; then
+    mkdir static
+fi
+cp ui/out/* static/
+
+mypy .
+pytest .
+
+pyinstaller \
+    --onefile \
+    tf_plan_view.py
 
 log "app build process end"
